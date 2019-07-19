@@ -17,15 +17,6 @@ export default function searchReducer(state = defaultState, action) {
   const { type, payload } = action;
 
   switch (type) {
-    case 'UPDATE_SEARCH_TEXT': {
-      return {
-        ...state,
-        searchText: payload.searchText
-      };
-    }
-  }
-
-  switch (type) {
     case 'GET_WEATHER_FULFILLED':
       {
         return {
@@ -50,8 +41,13 @@ export default function searchReducer(state = defaultState, action) {
         };
       }
 
-    default: {
-      return state;
+    case 'UPDATE_CITY': {
+      return {
+        ...state,
+        city: payload.city,
+      };
     }
+
+    default: return state;
   }
 }
